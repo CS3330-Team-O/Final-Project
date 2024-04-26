@@ -1,12 +1,13 @@
 package edu.mu;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class TransactionSingleton {
 	private static TransactionSingleton instance;
 	private ArrayList<Product> cart = new ArrayList<>();
 	private double total;
-	
 	
 	private TransactionSingleton() {
         cart = new ArrayList<>();
@@ -46,7 +47,31 @@ public class TransactionSingleton {
     }
     
     public void checkout() {
-    	
+    	int valid = 0;
+    	ICheckoutStrategy checkoutStrategy = null;
+    	System.out.println("Would you like to pay with cash or card? \n1. Cash \n2. Card");
+    	while(valid == 0) {
+    		try {
+    			Scanner scanner = new Scanner(System.in);
+        		int type = scanner.nextInt();
+            	if(type == 1) {
+            		checkoutStrategy = new CashCheckoutStrategy();
+            		valid =1;
+            	}
+            	else if(type == 2) {
+            		checkoutStrategy = new CardCheckoutStrategy();
+            		valid =1;
+            	}
+            	else {
+            		System.out.println("Invalid input. Enter a 1 or a 2");
+            	}
+        	}
+        	catch (InputMismatchException e) {
+        		System.out.println("Invalid input. Please enter a number.");
+        	}
+    	}
+    	checkoutStrategy.checkout(total);
+    	System.out.println("Thank you for shopping with us!");	
     	clearCart();
     }
 }
