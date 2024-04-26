@@ -46,6 +46,7 @@ public class TransactionSingleton {
     }
     
     public void checkout() {
+    	
     	clearCart();
     }
 }
