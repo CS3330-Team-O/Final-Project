@@ -5,7 +5,7 @@ public abstract class Product {
 	protected int id = 0;
 	protected String type;
 	protected String title;
-	protected int price;
+	protected double price;
 	protected int stock;
 	
 	public int getId() {
@@ -26,10 +26,10 @@ public abstract class Product {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getCost() {
+	public double getCost() {
 		return price;
 	}
-	public void setCost(int price) {
+	public void setCost(double price) {
 		this.price = price;
 	}
 	public int getStock() {
