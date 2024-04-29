@@ -3,7 +3,7 @@ package edu.mu;
 public abstract class Product {
 	
 	protected int id = 0;
-	protected String type;
+	protected productType type = null;
 	protected String title;
 	protected double price;
 	protected int stock;
@@ -14,11 +14,15 @@ public abstract class Product {
 	public void setId() {
 		this.id++;
 	}
-	public String getType() {
+	public productType gettype() {
 		return type;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setType(productType type) {
+		try {
+			this.type = type;
+		}catch(Exception e) {
+			System.out.println("Error in setType: " + e);
+		}
 	}
 	public String getTitle() {
 		return title;

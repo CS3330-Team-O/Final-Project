@@ -6,9 +6,9 @@ public class MagazineProduct extends Product{
 	}
 	
 	
-	public MagazineProduct(int id, String type, String title, double price, int stock) {
+	public MagazineProduct(int id, productType type, String title, double price, int stock) {
 		super.id = id;
-		super.type="Magazine";
+		super.type=type;
 		super.title=title;
 		super.price=price;
 		super.stock=stock;
