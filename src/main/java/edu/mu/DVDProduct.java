@@ -4,8 +4,7 @@ public class DVDProduct extends Product{
 	public DVDProduct() {
 	}
 	
-	
-	public DVDProduct(int id, productType type, String title, double price, int stock) {
+	public DVDProduct(int id, String title, double price, int stock) {
 		super.id = id;
 		super.type=type;
 		super.title=title;
