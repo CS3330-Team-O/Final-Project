@@ -48,11 +48,11 @@ public class TransactionSingleton {
     
     public void checkout() {
     	int valid = 0;
+    	Scanner scanner = new Scanner(System.in);
     	ICheckoutStrategy checkoutStrategy = null;
     	System.out.println("Would you like to pay with cash or card? \n1. Cash \n2. Card");
     	while(valid == 0) {
     		try {
-    			Scanner scanner = new Scanner(System.in);
         		int type = scanner.nextInt();
             	if(type == 1) {
             		checkoutStrategy = new CashCheckoutStrategy();
@@ -72,6 +72,7 @@ public class TransactionSingleton {
     	}
     	checkoutStrategy.checkout(total);
     	System.out.println("Thank you for shopping with us!");	
+    	scanner.close();
     	clearCart();
     }
 }
