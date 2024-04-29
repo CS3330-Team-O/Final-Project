@@ -34,5 +34,11 @@ public class MagazineProduct extends Product{
 			return true;
 		}
 	}
+
+
+	@Override
+	public int updateStock(int stock) {
+		return stock--;
+	}
 	
 }

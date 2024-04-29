@@ -36,5 +36,11 @@ public class AudioBookProduct extends Product {
 	}
 
 
+	@Override
+	public int updateStock(int stock) {
+		return --stock;
+	}
+
+
 
 }

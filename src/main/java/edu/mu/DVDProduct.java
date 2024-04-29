@@ -33,4 +33,10 @@ public class DVDProduct extends Product{
 			return true;
 		}
 	}
+
+
+	@Override
+	public int updateStock(int stock) {
+		return stock--;
+	}
 }
