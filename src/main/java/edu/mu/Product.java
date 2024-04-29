@@ -2,7 +2,7 @@ package edu.mu;
 
 public abstract class Product {
 	
-	protected int id;
+	protected int id = 0;
 	protected String type;
 	protected String title;
 	protected int price;
@@ -11,8 +11,8 @@ public abstract class Product {
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId() {
+		this.id++;
 	}
 	public String getType() {
 		return type;
