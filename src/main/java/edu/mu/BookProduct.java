@@ -36,4 +36,11 @@ public class BookProduct extends Product {
 		}
 	}
 
+	@Override
+	public int updateStock(int stock) {
+		return stock--;
+	}
+	
+	
+
 }

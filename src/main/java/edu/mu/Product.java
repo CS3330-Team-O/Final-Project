@@ -50,4 +50,6 @@ public abstract class Product {
 	
 	
 	public abstract boolean isInStock(int stock);
+	
+	public abstract int updateStock(int stock);
 }
