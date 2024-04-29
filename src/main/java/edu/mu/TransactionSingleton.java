@@ -8,6 +8,8 @@ public class TransactionSingleton {
 	private static TransactionSingleton instance;
 	private ArrayList<Product> cart = new ArrayList<>();
 	private double total;
+
+	private static BookClubManager bookBoy = new BookClubManager();
 	
 	private TransactionSingleton() {
         cart = new ArrayList<>();
@@ -42,6 +44,42 @@ public class TransactionSingleton {
         }
     }
 
+	public boolean BookClub(){
+		System.out.println("Are you a member of the book club?\n1. yes \n2. no");
+		try {
+			Scanner scanner = new Scanner(System.in);
+			int type = scanner.nextInt();
+			if(type == 1) {
+			}
+			else if (type == 2){
+				return false;
+			} else {
+				System.out.println("Invalid input. Enter a 1 or a 2");
+			}
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Invalid input. Please enter a number.");
+		}
+
+		//Name enter to search for customer in book club
+		System.out.println("Please enter your name in format (last, first)");
+		try {
+			Scanner scanner = new Scanner(System.in);
+			String name = scanner.nextLine();
+			if(bookBoy.findCustomer(name)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Invalid input. Please enter your name in format (last, first)");
+		}
+
+
+		return false;
+	}
+
     public double getTotal() {
         return total;
     }
@@ -49,6 +87,11 @@ public class TransactionSingleton {
     public void checkout() {
     	int valid = 0;
     	ICheckoutStrategy checkoutStrategy = null;
+
+		if(BookClub()){
+			this.total = this.total * 0.8;
+		}
+
     	System.out.println("Would you like to pay with cash or card? \n1. Cash \n2. Card");
     	while(valid == 0) {
     		try {
