@@ -9,11 +9,13 @@ public class TransactionSingleton {
 	private ArrayList<Product> cart = new ArrayList<>();
 	private double total;
 	
+	//Initializes total and array list
 	private TransactionSingleton() {
         cart = new ArrayList<>();
         total = 0.0;
     }
 	
+	//Singleton design pattern to make sure there is only one instance of TransactionSingleton
 	public static TransactionSingleton getInstance() {
         if (instance == null) {
             instance = new TransactionSingleton();
@@ -21,38 +23,44 @@ public class TransactionSingleton {
         return instance;
     }
 	
+	//Adds item to cart by adding the item to the cart array list and adding the price to the total
 	public void addItemToCart(Product product) {
         cart.add(product);
         total += product.getCost();
     }
 	
+	//Removes item to cart by removing the item to the cart array list and subtracting the price to the total
 	public void removeItemFromCart(Product product) {
         cart.remove(product);
         total -= product.getCost();
     }
 	
+	//Helper method to be called in checkout() that clears array list and resets total to 0.0
 	public void clearCart() {
 		cart.clear();
 		total = 0.0;
 	}
 	
+	//Prints cart
 	public void printCart() {
 		for (Product product : cart) {
             System.out.println(product);
         }
     }
 
+	//Returns total price of books in cart
     public double getTotal() {
         return total;
     }
     
+    //Checkout checks out the user and uses strategy method to checkout with cash or card
     public void checkout() {
     	int valid = 0;
+    	Scanner scanner = new Scanner(System.in);
     	ICheckoutStrategy checkoutStrategy = null;
     	System.out.println("Would you like to pay with cash or card? \n1. Cash \n2. Card");
     	while(valid == 0) {
     		try {
-    			Scanner scanner = new Scanner(System.in);
         		int type = scanner.nextInt();
             	if(type == 1) {
             		checkoutStrategy = new CashCheckoutStrategy();
@@ -72,6 +80,7 @@ public class TransactionSingleton {
     	}
     	checkoutStrategy.checkout(total);
     	System.out.println("Thank you for shopping with us!");	
+    	scanner.close();
     	clearCart();
     }
 }
