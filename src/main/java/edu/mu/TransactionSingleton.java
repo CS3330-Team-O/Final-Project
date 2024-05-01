@@ -58,7 +58,11 @@ public class TransactionSingleton {
 			if(type == 1) {
 			}
 			else if (type == 2){
-				return false;
+				System.out.println("Enter your name and email to join. \"last,first email\"");
+				String name = scanner.next();
+				String email = scanner.next();
+				bookBoy.newCustomer(name, email);
+				return true;
 			} else {
 				System.out.println("Invalid input. Enter a 1 or a 2");
 			}
