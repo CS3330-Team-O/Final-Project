@@ -62,11 +62,12 @@ public class Product {
 		return true;
 	}
 	
-	public int updateStock(Product product) {
-		if(product.stock!=0) {
-			return --product.stock;
+	public boolean updateStock(Product product) {
+		if(product.getStock()!=0) {
+			product.setStock((product.getStock())-1);
+			return true;
 		}
 		System.out.println("The stock cannot be updated, this item is not in stock");
-		return product.stock;
+		return false;
 	}
 }

@@ -121,13 +121,13 @@ class ProductTest {
 	@Test
 	void testUpdateStock() {
 		Product b = new Product(2, productType.Book, "Syd's Book", 1.99, 3);
-		assertEquals(2, b.updateStock(b));
+		assertEquals(true, b.updateStock(b));
 	}
 	
 	@Test
 	void testUpdateStockFalse() {
 		Product b = new Product(2, productType.Book, "Syd's Book", 1.99, 0);
-		assertEquals(0, b.updateStock(b));
+		assertEquals(false, b.updateStock(b));
 	}
 	
 
