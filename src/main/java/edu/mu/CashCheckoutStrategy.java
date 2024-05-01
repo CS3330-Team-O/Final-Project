@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class CashCheckoutStrategy implements ICheckoutStrategy {
 
+	//Cash checkout strategy that returns change
 	@Override
 	public void checkout(double total) {
 		Scanner scanner = new Scanner(System.in);
