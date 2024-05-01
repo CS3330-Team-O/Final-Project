@@ -65,27 +65,29 @@ public class TransactionSingleton {
 
 	public boolean BookClub(){
 		System.out.println("Are you a member of the book club?\n1. yes \n2. no");
-		try {
-			Scanner scanner = new Scanner(System.in);
-			int type = scanner.nextInt();
-			if(type == 1) {
-			}
-			else if (type == 2){
-				System.out.println("Would you like to join the book club? \n1. yes \n2. no");
-				int type2 = scanner.nextInt();
-				if(type2 == 1){
-					joinBookClub();
-					return true;
-				} else if (type2 == 2) {
-					return false;
+		boolean success = false;
+		do {
+			try {
+				Scanner scanner = new Scanner(System.in);
+				int type = scanner.nextInt();
+				if (type == 1) {
+					success = true;
+				} else if (type == 2) {
+					System.out.println("Would you like to join the book club? \n1. yes \n2. no");
+					int type2 = scanner.nextInt();
+					if (type2 == 1) {
+						joinBookClub();
+						return true;
+					} else if (type2 == 2) {
+						return false;
+					}
+				} else {
+					System.out.println("Invalid input. Enter a 1 or a 2");
 				}
-			} else {
-				System.out.println("Invalid input. Enter a 1 or a 2");
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid input. Please enter a number.");
 			}
-		}
-		catch (InputMismatchException e) {
-			System.out.println("Invalid input. Please enter a number.");
-		}
+		}while(!success);
 
 		//Name enter to search for customer in book club
 		System.out.println("Please enter your name in format (last, first)");
