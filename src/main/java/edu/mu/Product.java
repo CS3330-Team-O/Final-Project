@@ -1,16 +1,28 @@
 package edu.mu;
 
-public abstract class Product {
-	protected int id = 0;
+public class Product {
+	protected int id;
 	protected productType type = null;
 	protected String title;
 	protected double price;
 	protected int stock;
+	
+	public Product() {
+	}
+	
+	public Product(int id, productType type,String title, double price, int stock) {
+		this.id = id;
+		this.type=productType.Audiobook;
+		this.title=title;
+		this.price=price;
+		this.stock=stock;
+	}
+	
 	public int getId() {
 		return id;
 	}
-	public void setId() {
-		this.id++;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public productType getType() {
 		return type;
