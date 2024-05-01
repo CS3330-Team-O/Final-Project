@@ -7,7 +7,7 @@ public class AudioBookProduct extends Product {
 	
 	public AudioBookProduct(int id, String title, double price, int stock) {
 		super.id = id;
-		super.type=type;
+		super.type=productType.Audiobook;
 		super.title=title;
 		super.price=price;
 		super.stock=stock;
