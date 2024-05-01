@@ -36,10 +36,13 @@ public class TransactionSingleton {
     }
 	
 	//Removes item to cart by removing the item to the cart array list and subtracting the price to the total
-	public void removeItemFromCart(Product product) {
-		product.updateStock(product);
-        cart.remove(product);
-        total -= product.getCost();
+	public boolean removeItemFromCart(Product product) {
+		if(product.updateStock(product)) {
+			cart.remove(product);
+	        total -= product.getCost();
+	        return true;
+		}
+        return false;
     }
 	
 	//Helper method to be called in checkout() that clears array list and resets total to 0.0
@@ -48,13 +51,14 @@ public class TransactionSingleton {
 		total = 0.0;
 	}
 	
-	//Prints cart
+	//Prints cart helper method used in main
 	public void printCart() {
 		for (Product product : cart) {
             System.out.println(product);
         }
     }
 
+	//Determines if members are in book club
 	public boolean BookClub(){
 		System.out.println("Are you a member of the book club?\n1. yes \n2. no");
 		try {
@@ -81,6 +85,7 @@ public class TransactionSingleton {
 		try {
 			Scanner scanner = new Scanner(System.in);
 			String name = scanner.nextLine();
+			scanner.close();
 			if(bookBoy.findCustomer(name)) {
 				return true;
 			} else {
@@ -95,13 +100,13 @@ public class TransactionSingleton {
 		return false;
 	}
 
-    //Returns total price of books in cart
+    //Returns total price of books in cart to be used in main
     public double getTotal() {
         return total;
     }
     
     //Checkout checks out the user and uses strategy method to checkout with cash or card
-    public void checkout() {
+    public boolean checkout() {
     	int valid = 0;
     	Scanner scanner = new Scanner(System.in);
     	ICheckoutStrategy checkoutStrategy = null;
@@ -130,9 +135,14 @@ public class TransactionSingleton {
         		System.out.println("Invalid input. Please enter a number.");
         	}
     	}
-    	checkoutStrategy.checkout(total);
-    	System.out.println("Thank you for shopping with us!");	
     	scanner.close();
-    	clearCart();
+    	if(checkoutStrategy.checkout(total)) {
+    		System.out.println("Thank you for shopping with us!");
+    		clearCart();
+    		return true;
+    	}
+    	System.out.println("Unable to checkout");
+    	return false;
+    	
     }
 }
