@@ -27,6 +27,7 @@
   <li>Getters and setters</li>
   <li>ToString</li>
   <li>isInStock</li>
+  <li>updateStock</li>
 </ul>
 
 <h3>Subclass:</h3>
