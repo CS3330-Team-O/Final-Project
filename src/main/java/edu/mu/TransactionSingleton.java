@@ -26,13 +26,18 @@ public class TransactionSingleton {
     }
 	
 	//Adds item to cart by adding the item to the cart array list and adding the price to the total
-	public void addItemToCart(Product product) {
-        cart.add(product);
-        total += product.getCost();
+	public boolean addItemToCart(Product product) {
+		if(product.isInStock(product)) {
+			cart.add(product);
+	        total += product.getCost();
+	        return true;
+		}
+        return false;
     }
 	
 	//Removes item to cart by removing the item to the cart array list and subtracting the price to the total
 	public void removeItemFromCart(Product product) {
+		product.updateStock(product);
         cart.remove(product);
         total -= product.getCost();
     }
