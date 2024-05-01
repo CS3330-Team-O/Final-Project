@@ -49,7 +49,18 @@ public abstract class Product {
 	}
 	
 	
-	public abstract boolean isInStock(int stock);
+	public boolean isInStock(Product product) {
+		if(product.stock == 0) {
+			return false;
+		}
+		return true;
+	}
 	
-	public abstract int updateStock(int stock);
+	public int updateStock(Product product) {
+		if(product.stock!=0) {
+			return --product.stock;
+		}
+		System.out.println("The stock cannot be updated, this item is not in stock");
+		return product.stock;
+	}
 }

@@ -21,22 +21,4 @@ public class DVDProduct extends Product{
 	}
 		
 	
-
-	@Override
-	public boolean isInStock(int stock) {
-		if(stock == 0) {
-			System.out.println("This DVD is out of stock!");
-			return false;
-		}
-		else {
-			System.out.println("This DVD is still in stock!");
-			return true;
-		}
-	}
-
-
-	@Override
-	public int updateStock(int stock) {
-		return stock--;
-	}
 }

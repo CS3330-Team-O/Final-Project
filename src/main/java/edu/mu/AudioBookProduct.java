@@ -21,25 +21,6 @@ public class AudioBookProduct extends Product {
 		this.stock=ab.stock;
 	}
 		
-	
-
-	@Override
-	public boolean isInStock(int stock) {
-		if(stock == 0) {
-			System.out.println("This audiobook is out of stock!");
-			return false;
-		}
-		else {
-			System.out.println("This audibook is still in stock!");
-			return true;
-		}
-	}
-
-
-	@Override
-	public int updateStock(int stock) {
-		return --stock;
-	}
 
 
 
