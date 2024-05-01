@@ -5,10 +5,9 @@ public class BookProduct extends Product {
 	public BookProduct() {
 	}
 	
-	
-	public BookProduct(int id, productType type, String title, double price, int stock) {
+	public BookProduct(int id, String title, double price, int stock) {
 		super.id = id;
-		super.type=type;
+		super.type=productType.Book;
 		super.title=title;
 		super.price=price;
 		super.stock=stock;

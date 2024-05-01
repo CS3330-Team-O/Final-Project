@@ -16,11 +16,29 @@ public class BookClubManager {
         customers.add(current);
     }
 
+    public void updateCustomer(String name, String email){
+        current.name = name;
+        current.email = email;
+    }
+
+    public void newCustomer(String name, String email){
+        current = new Customer(name, email);
+        customers.add(current);
+    }
+
+    public boolean findCustomer(String name){
+        for (Customer customer : customers) {
+            if (customer.name.equals(name)) {
+                current = customer;
+                return true;
+            }
+        }
+        return false;
+    }
+
     protected class Customer{
         protected String email;
         protected String name ; //first, last
-        protected int storeCredit = 0;
-        protected ArrayList<Integer> purchased = new ArrayList<Integer>();
 
         Customer(){
             this.email = "example@email.com";
@@ -32,39 +50,6 @@ public class BookClubManager {
             this.email = e1;
         }
 
-        protected void bookBought(int bookID) {
-            this.purchased.add(bookID);
-
-        }
-
-        public void newCustomer(String name, String email){
-            current = new Customer(name, email);
-            customers.add(current);
-        }
-
-        public boolean findCustomer(String name){
-            for(int i = 0; i < customers.size(); ++i){
-                if(customers.get(i).name.equals(name)){
-                    current = customers.get(i);
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public boolean useCredit(String name){
-            if(current.storeCredit > 0) {
-                current.storeCredit --;
-                return true;
-            }
-            return false;
-        }
-
-        public void updateCredit(String name){
-            if(current.purchased.size() % 10 == 0){
-                current.storeCredit++;
-            }
-        }
     }
 
 
