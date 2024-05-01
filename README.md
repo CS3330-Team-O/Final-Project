@@ -66,6 +66,7 @@
 <ul>
   <li>NewCustomer</li>
   <li>findCustomer</li>
+  <li>updateCustomer</li>
 </ul>
   
 
