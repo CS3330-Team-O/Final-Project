@@ -1,15 +1,19 @@
 package edu.mu;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class InventoryManager {
 	
 	public ArrayList <Product> productList = new ArrayList<>();
+	String inventoryFilePath;
 	
 	public boolean readFromFile(String fileName) {
+		this.inventoryFilePath = fileName;
 		String line = "";
 		String split = ",";
 		try {
@@ -69,6 +73,45 @@ public class InventoryManager {
 		if(!cars) {
 			System.out.println("There are no cars in this list!");
 		}
+	}
+	
+	public boolean removeProduct(Product product) {
+		try {
+			for(int i = 0; i < productList.size(); ++i) {
+				if(this.productList.get(i).equals(product)) {
+					productList.remove(i);
+				}
+			}
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+	}
+
+	public boolean addProduct(Product product) {
+		try {
+			this.productList.add(product);
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+	}
+	
+	public boolean saveProductList() {
+		FileWriter fw;
+		try {
+			fw = new FileWriter(this.inventoryFilePath, false);
+			BufferedWriter bwr = new BufferedWriter(fw);
+			bwr.write("product_id,product_type,product_name,product_price,product_stock\n");
+			for (int i = 0; i < this.productList.size(); i++) {
+				bwr.write(productList.get(i).id + "," + productList.get(i).getType() + "," + productList.get(i).title + "," + productList.get(i).price + "," + productList.get(i).stock + "\n");
+			}
+			bwr.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		} 
+		return true;
 	}
 
 }

@@ -1,17 +1,17 @@
 package edu.mu;
 
 public class DVDProduct extends Product{
+	
 	public DVDProduct() {
 	}
 	
 	public DVDProduct(int id, String title, double price, int stock) {
 		super.id = id;
-		super.type=type;
+		super.type=productType.DVD;
 		super.title=title;
 		super.price=price;
 		super.stock=stock;
 	}
-	
 	
 	public void copy(DVDProduct d) {
 		this.id = d.id;
@@ -19,6 +19,5 @@ public class DVDProduct extends Product{
 		this.price=d.price;
 		this.stock=d.stock;
 	}
-		
-	
+
 }
