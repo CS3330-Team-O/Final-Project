@@ -55,6 +55,12 @@ public class Product {
 	}
 	
 	
+	/**
+	 * Checks if a product is still in stock.
+	 *
+	 * @param {Product} product The product to check for stock.
+	 * @return {boolean} True if the product is in stock, false otherwise.
+	 */
 	public boolean isInStock(Product product) {
 		if(product.stock == 0) {
 			return false;
@@ -62,6 +68,14 @@ public class Product {
 		return true;
 	}
 	
+	
+	/**
+	 * Updates the stock number of a product when it is bought from the store and returns a boolean value
+	 * indicating whether the update was successful.
+	 *
+	 * @param {Product} product The product that was bought.
+	 * @returns {boolean} True if the stock was successfully updated, false otherwise.
+	 */
 	public boolean updateStock(Product product) {
 		if(product.getStock()!=0) {
 			product.setStock((product.getStock())-1);
