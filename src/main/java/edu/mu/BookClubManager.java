@@ -16,14 +16,24 @@ public class BookClubManager {
         customers.add(current);
     }
 
-    public void updateCustomer(String name, String email){
-        current.name = name;
-        current.email = email;
+    public boolean updateCustomer(String name, String email){
+        try{
+            current.name = name;
+            current.email = email;
+            return true;
+        } catch (Exception e){
+            return false;
+        }
     }
 
-    public void newCustomer(String name, String email){
-        current = new Customer(name, email);
-        customers.add(current);
+    public boolean newCustomer(String name, String email){
+        try{
+            current = new Customer(name, email);
+            customers.add(current);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
     }
 
     public boolean findCustomer(String name){
@@ -36,7 +46,7 @@ public class BookClubManager {
         return false;
     }
 
-    protected class Customer{
+    protected static class Customer{
         protected String email;
         protected String name ; //first, last
 

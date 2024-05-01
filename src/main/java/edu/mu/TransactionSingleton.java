@@ -55,6 +55,14 @@ public class TransactionSingleton {
         }
     }
 
+	public void joinBookClub(){
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter your name and email to join. \"last,first\" \n \"email\"");
+		String name = scanner.nextLine();
+		String email = scanner.nextLine();
+		boolean works = bookBoy.newCustomer(name, email);
+	}
+
 	public boolean BookClub(){
 		System.out.println("Are you a member of the book club?\n1. yes \n2. no");
 		try {
@@ -63,11 +71,14 @@ public class TransactionSingleton {
 			if(type == 1) {
 			}
 			else if (type == 2){
-				System.out.println("Enter your name and email to join. \"last,first email\"");
-				String name = scanner.next();
-				String email = scanner.next();
-				bookBoy.newCustomer(name, email);
-				return true;
+				System.out.println("Would you like to join the book club? \n1. yes \n2. no");
+				int type2 = scanner.nextInt();
+				if(type2 == 1){
+					joinBookClub();
+					return true;
+				} else if (type2 == 2) {
+					return false;
+				}
 			} else {
 				System.out.println("Invalid input. Enter a 1 or a 2");
 			}
