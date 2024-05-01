@@ -28,11 +28,7 @@ public class Product {
 		return type;
 	}
 	public void setType(productType type) {
-		try {
-			this.type = type;
-		}catch(Exception e) {
-			System.out.println("Error in setType: " + e);
-		}
+		this.type = type;
 	}
 	public String getTitle() {
 		return title;
