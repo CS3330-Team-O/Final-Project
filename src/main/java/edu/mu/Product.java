@@ -7,7 +7,16 @@ public class Product {
 	protected double price;
 	protected int stock;
 	
+	public Product() {
+	}
 	
+	public Product(int id, productType type,String title, double price, int stock) {
+		this.id = id;
+		this.type=productType.Audiobook;
+		this.title=title;
+		this.price=price;
+		this.stock=stock;
+	}
 	
 	public int getId() {
 		return id;
