@@ -4,10 +4,9 @@ public class DVDProduct extends Product{
 	public DVDProduct() {
 	}
 	
-	
-	public DVDProduct(int id, String type, String title, int price, int stock) {
+	public DVDProduct(int id, String title, double price, int stock) {
 		super.id = id;
-		super.type="DVD";
+		super.type=type;
 		super.title=title;
 		super.price=price;
 		super.stock=stock;
@@ -33,5 +32,11 @@ public class DVDProduct extends Product{
 			System.out.println("This DVD is still in stock!");
 			return true;
 		}
+	}
+
+
+	@Override
+	public int updateStock(int stock) {
+		return stock--;
 	}
 }

@@ -5,10 +5,9 @@ public class BookProduct extends Product {
 	public BookProduct() {
 	}
 	
-	
-	public BookProduct(int id, String type, String title, int price, int stock) {
+	public BookProduct(int id, String title, double price, int stock) {
 		super.id = id;
-		super.type="Book";
+		super.type=type;
 		super.title=title;
 		super.price=price;
 		super.stock=stock;
@@ -35,5 +34,12 @@ public class BookProduct extends Product {
 			return true;
 		}
 	}
+
+	@Override
+	public int updateStock(int stock) {
+		return stock--;
+	}
+	
+	
 
 }

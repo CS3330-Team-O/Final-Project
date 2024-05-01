@@ -5,10 +5,9 @@ public class MagazineProduct extends Product{
 	public MagazineProduct() {
 	}
 	
-	
-	public MagazineProduct(int id, String type, String title, int price, int stock) {
+	public MagazineProduct(int id, String title, double price, int stock) {
 		super.id = id;
-		super.type="Magazine";
+		super.type=type;
 		super.title=title;
 		super.price=price;
 		super.stock=stock;
@@ -34,6 +33,12 @@ public class MagazineProduct extends Product{
 			System.out.println("This magazine is still in stock!");
 			return true;
 		}
+	}
+
+
+	@Override
+	public int updateStock(int stock) {
+		return stock--;
 	}
 	
 }

@@ -5,10 +5,9 @@ public class AudioBookProduct extends Product {
 	public AudioBookProduct() {
 	}
 	
-	
-	public AudioBookProduct(int id, String type, String title, int price, int stock) {
+	public AudioBookProduct(int id, String title, double price, int stock) {
 		super.id = id;
-		super.type="AudioBook";
+		super.type=type;
 		super.title=title;
 		super.price=price;
 		super.stock=stock;
@@ -34,6 +33,12 @@ public class AudioBookProduct extends Product {
 			System.out.println("This audibook is still in stock!");
 			return true;
 		}
+	}
+
+
+	@Override
+	public int updateStock(int stock) {
+		return --stock;
 	}
 
 
