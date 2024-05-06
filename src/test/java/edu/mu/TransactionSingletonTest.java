@@ -50,18 +50,5 @@ class TransactionSingletonTest {
 	void testremoveItemFromCart() {
 		assertEquals(true, transactionSingleton.removeItemFromCart(p));
 	}
-	
-	/*
-	@Test
-	void testBookClub() {
-		assertEquals(true, transactionSingleton.BookClub());
-	}*/
-	
-	/*
-	@Test
-	void testCheckout() {
-		fail("Not yet implemented");
-	}
-	*/
 
 }

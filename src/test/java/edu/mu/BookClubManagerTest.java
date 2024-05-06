@@ -16,37 +16,40 @@ public class BookClubManagerTest{
     private static BookClubManager bookTest;
 
     @BeforeAll
-    static void setUpPreClass() throws Exception {
+    static void setUpPreClass(){
         bookTest = new BookClubManager();
     }
 
     @AfterAll
-    static void tearDownPostClass() throws Exception {
+    static void tearDownPostClass() {
 
     }
 
     @BeforeEach
-    void setUp() throws Exception {
+    void setUp(){
         System.out.println("Running Before Each");
     }
 
     @AfterEach
-    void tearDown() throws Exception {
+    void tearDown() {
     }
 
     @Test
-    void newCustomerTest() throws Exception {
+    @Order(1)
+    void newCustomerTest() {
         assertTrue(bookTest.newCustomer("Test name"));
     }
 
     @Test
-    void findCustomerTest() throws Exception {
+    @Order(2)
+    void findCustomerTest()  {
         assertFalse(bookTest.newCustomer("wrong name"));
         assertTrue(bookTest.findCustomer("Test name"));
     }
 
     @Test
-    void loadCustomers() throws Exception {
+    @Order(3)
+    void loadCustomers(){
         assertTrue(bookTest.newCustomer("Test name"));
         assertTrue(bookTest.newCustomer("James"));
         assertTrue(bookTest.newCustomer("Test name"));
@@ -54,19 +57,15 @@ public class BookClubManagerTest{
     }
 
     @Test
-    void bookClubTest() throws Exception {
-        String sample1 = "1 \n Isaiah Shavers \n";
+    @Order(4)
+    void bookClubTest() {
+        String sample1 = "2 \n 1 \n Isaiah Shavers \n";
         String sample2 = "2 \n 2 \n ";
         Scanner scanner = new Scanner(sample1);
         assertTrue(bookTest.BookClub(scanner));
         scanner.close();
         Scanner scanner1 = new Scanner(sample2);
         assertFalse(bookTest.BookClub(scanner1));
-    }
-
-    @Test
-    void joinBookclub() throws Exception {
-
     }
 
 }
