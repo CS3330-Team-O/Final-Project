@@ -99,7 +99,6 @@ public class TransactionSingleton {
     	Scanner scanner = new Scanner(System.in);
     	ICheckoutStrategy checkoutStrategy = null;
 
-    	
 		if(bookBoy.BookClub(scanner)){
 			this.total = this.total * 0.8;
 		} else {
