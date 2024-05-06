@@ -38,8 +38,7 @@ class TransactionSingletonTest {
 	@Test
 	public void testTransactionSingletonInstance() {
         TransactionSingleton TransactionSingleton1 = TransactionSingleton.getInstance();
-        TransactionSingleton TransactionSingleton2 = TransactionSingleton.getInstance();
-        assertSame(TransactionSingleton1, TransactionSingleton2);
+        assertSame(transactionSingleton, TransactionSingleton1);
     }
 
 	@Test
