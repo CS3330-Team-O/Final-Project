@@ -6,11 +6,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class InventoryManager {
 	
 	public ArrayList <Product> productList = new ArrayList<>();
 	String inventoryFilePath;
+	
+	public ArrayList<Product> getProductList() {
+		return this.productList;
+	}
 	
 	public boolean readFromFile(String fileName) {
 		this.inventoryFilePath = fileName;
@@ -74,6 +79,25 @@ public class InventoryManager {
 			System.out.println("There are no cars in this list!");
 		}
 	}
+	
+	public boolean findProduct(Product product) {
+		for(int i = 0; i < productList.size(); ++i) {
+			if(this.productList.get(i).equals(product)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public Product findProduct(int productId) {
+		for(int i = 0; i < productList.size(); ++i) {
+			if(this.productList.get(i).id == productId) {
+				return this.productList.get(i);
+			}
+		}
+		return null;
+	}
+	
 	
 	public boolean removeProduct(Product product) {
 		try {
