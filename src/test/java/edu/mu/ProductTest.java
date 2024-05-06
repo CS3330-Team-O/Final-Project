@@ -41,6 +41,19 @@ class ProductTest {
 	}
 	
 
+
+    @Test
+    public void testToString() {
+        // Create an instance of Product
+        Product product = new Product(1, productType.Book, "The Great Gatsby", 9.99, 10);
+
+        // Call the toString() method
+        String result = product.toString();
+
+        // Assert that the result matches the expected string
+        assertEquals("Product [id=1, type=Book, title=The Great Gatsby, price=9.99, stock=10]", result);
+    }
+    
 	@Test
 	@Order(1)
 	void testGetID() {
