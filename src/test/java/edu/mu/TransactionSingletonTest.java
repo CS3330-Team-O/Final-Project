@@ -50,5 +50,18 @@ class TransactionSingletonTest {
 	void testremoveItemFromCart() {
 		assertEquals(true, transactionSingleton.removeItemFromCart(p));
 	}
+	
+	@Test
+	void testclearCart() {
+		assertEquals(true, transactionSingleton.clearCart());
+	}
+	
+	@Test
+	void testgetTotal() {
+		Product p2 = new DVDProduct(5, "TransactionSingleton total test", 3.99, 3);
+		transactionSingleton.addItemToCart(p2);
+		assertEquals(3.99, transactionSingleton.getTotal());
+	}
+
 
 }
