@@ -13,6 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class InventoryManagerTest {
 	private File f = null;
@@ -23,7 +24,11 @@ public class InventoryManagerTest {
 		this.im = new InventoryManager();
 		this.f = new File("testCSV.csv");
 		FileWriter w = new FileWriter("testCSV.csv");
-	    w.write("product_id,product_type,product_name,product_price,product_stock\n1,Book,The Hunger Games,30,10\n2,DVD,Finding Nemo,15.20,13\n3,Magazine,Fortune,5.99,50\n4,Audiobook,Lord of the rings,25.35,8");
+	    w.write("product_id,product_type,product_name,product_price,product_stock\n");
+	    w.write("1,Book,The Hunger Games,30,10\n");
+	    w.write("2,DVD,Finding Nemo,15.20,13\n");
+	    w.write("3,Magazine,Fortune,5.99,50\n");
+	    w.write("4,Audiobook,Lord of the rings,25.35,8");
 	    w.close();
 	    im.readFromFile("testCSV.csv");
 	}
@@ -71,13 +76,16 @@ public class InventoryManagerTest {
 	@Test
 	@Order(3)
 	public void saveProductListTest() {
-		Product p = new DVDProduct(5, "DavidTest", 15.09, 10);
+		Product p = new DVDProduct(5, "David Test", 15.09, 10);
 		im.addProduct(p);
+		ArrayList<Product> copyOfProductList = new ArrayList<>();
+		copyOfProductList = im.getProductList();
+		im.displayAllProductInformation();
 		im.saveProductList();
-		Object copyOfProductList = new ArrayList<>();
-		copyOfProductList= im.getProductList().clone();
+		im.productList.clear();
 		im.readFromFile("testCSV.csv");
-		boolean same = copyOfProductList.equals(im.getProductList());
+		im.displayAllProductInformation();
+		boolean same = im.getProductList().equals(copyOfProductList);
 		assertTrue(same);
 	}
 
