@@ -21,6 +21,7 @@ public class CashCheckoutStrategy implements ICheckoutStrategy {
 			payWith = scanner.nextDouble();
 			if(payWith < total) {
 				System.out.println("Sorry, thats not enough.");
+				total = total - payWith;
 				continue;
 			}
 			check = false;

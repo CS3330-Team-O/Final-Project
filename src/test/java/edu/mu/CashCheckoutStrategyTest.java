@@ -32,7 +32,7 @@ public class CashCheckoutStrategyTest{
 	@Test
 	void checkout() {
 		CashCheckoutStrategy ccs = new CashCheckoutStrategy();
-		String input = "\n10.0\n90.0";
+		String input = "10.0\n90.0";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
         ccs.checkout(100.0);
