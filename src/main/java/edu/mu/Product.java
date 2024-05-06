@@ -12,7 +12,7 @@ public class Product {
 	
 	public Product(int id, productType type,String title, double price, int stock) {
 		this.id = id;
-		this.type=productType.Audiobook;
+		this.type=type;
 		this.title=title;
 		this.price=price;
 		this.stock=stock;
@@ -31,7 +31,7 @@ public class Product {
 		this.type = type;
 	}
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 	public void setTitle(String title) {
 		this.title = title;

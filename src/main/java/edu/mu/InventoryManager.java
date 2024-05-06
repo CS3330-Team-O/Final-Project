@@ -28,7 +28,7 @@ public class InventoryManager {
 				String[] v = line.split(split);
 				int id = Integer.parseInt(v[0]);
 				String type = v[1];
-				String title = v[1];
+				String title = v[2];
 				double price = Double.parseDouble(v[3]);
 				int stock = Integer.parseInt(v[4]);
 				switch (type) {
@@ -68,14 +68,14 @@ public class InventoryManager {
 	}
 	
 	public void displayAllProductInformation() {
-		boolean cars = false;
+		boolean books = false;
 		for(int i = 0; i < productList.size(); i++){
 				if(productList.get(i) instanceof Product) {
-					cars=true;
-					System.out.println("id: " + productList.get(i).id + ", title: " + productList.get(i).title + ", price: " + productList.get(i).price + ", stock: " + productList.get(i).stock);
+					books=true;
+					System.out.println("id: " + productList.get(i).id + ", type: " + productList.get(i).type + ", title: " + productList.get(i).title + ", price: " + productList.get(i).price + ", stock: " + productList.get(i).stock);
 				}
 			}
-		if(!cars) {
+		if(!books) {
 			System.out.println("There are no cars in this list!");
 		}
 	}
@@ -119,6 +119,25 @@ public class InventoryManager {
 		}catch(Exception e) {
 			return false;
 		}
+	}
+	
+	public boolean resetProductCsv() {
+		FileWriter fw;
+		try {
+			fw = new FileWriter(this.inventoryFilePath, false);
+			BufferedWriter bwr = new BufferedWriter(fw);
+			bwr.write("product_id,product_type,product_name,product_price,product_stock\n");
+			bwr.write("1,Book,Goblet of fire,30.0,10\n");
+			bwr.write("2,DVD,Spiderman 3,15.2,13\n");
+			bwr.write("3,Magazine,Times,5.99,50\n");
+			bwr.write("5,DVD,DavidTest,15.09,9\n");
+			bwr.write("6,Book,AshleyTest,16.0,2\n");
+			bwr.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		} 
+		return true;
 	}
 	
 	public boolean saveProductList() {
