@@ -94,11 +94,12 @@ public class TransactionSingleton {
      * Checkout checks out the user and uses strategy method to checkout with cash or card
      * 
      */
-    public boolean checkout() {
+    public void checkout() {
     	int valid = 0;
     	Scanner scanner = new Scanner(System.in);
     	ICheckoutStrategy checkoutStrategy = null;
 
+    	
 		if(bookBoy.BookClub(scanner)){
 			this.total = this.total * 0.8;
 		} else {
@@ -125,13 +126,10 @@ public class TransactionSingleton {
         		System.out.println("Invalid input. Please enter a number.");
         	}
     	}
+    	checkoutStrategy.checkout(total);
+    	System.out.println("Thank you for shopping with us!");
     	scanner.close();
-    	if(checkoutStrategy.checkout(total)) {
-    		System.out.println("Thank you for shopping with us!");
-    		clearCart();
-    		return true;
-    	}
-    	return false;
+    	clearCart();
     }
     
 }
