@@ -63,5 +63,9 @@ class TransactionSingletonTest {
 		assertEquals(3.99, transactionSingleton.getTotal());
 	}
 
+	@Test
+	void testprintCart() {
+		assertEquals(true, transactionSingleton.printCart());
+	}
 
 }

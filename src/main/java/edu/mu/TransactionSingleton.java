@@ -80,10 +80,11 @@ public class TransactionSingleton {
 	 * Prints cart
 	 * Helper method used in main
 	 */
-	public void printCart() {
+	public boolean printCart() {
 		for (Product product : cart) {
             System.out.println(product);
         }
+		return true;
     }
 
 	/**
