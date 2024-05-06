@@ -74,6 +74,7 @@ class TransactionSingletonTest {
         assertTrue(true);
 	}
 	
+	@Test
 	void testclearCart() {
 		assertEquals(true, transactionSingleton.clearCart());
 	}
