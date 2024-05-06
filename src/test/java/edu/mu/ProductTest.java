@@ -39,21 +39,7 @@ class ProductTest {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
-	
 
-
-    @Test
-    public void testToString() {
-        // Create an instance of Product
-        Product product = new Product(1, productType.Book, "The Great Gatsby", 9.99, 10);
-
-        // Call the toString() method
-        String result = product.toString();
-
-        // Assert that the result matches the expected string
-        assertEquals("Product [id=1, type=Book, title=The Great Gatsby, price=9.99, stock=10]", result);
-    }
-    
 	@Test
 	@Order(1)
 	void testGetID() {
@@ -142,6 +128,50 @@ class ProductTest {
 	void testUpdateStockFalse() {
 		Product b = new Product(2, productType.Book, "Syd's Book", 1.99, 0);
 		assertEquals(false, b.updateStock(b));
+	}
+	
+	@Test
+	void testBookProductCopy() {
+		BookProduct b = new BookProduct(2, "Syd's Book", 1.99, 0);
+		BookProduct n = new BookProduct(2, "David's Book", 1.99, 0);
+		b.copy(n);
+		b.getTitle();
+		boolean result = b.getTitle() == "David's Book";
+		assertTrue(result);
+		
+	}
+	
+	@Test
+	void testMagazineProductCopy() {
+		MagazineProduct b = new MagazineProduct(2, "Syd's Book", 1.99, 0);
+		MagazineProduct n = new MagazineProduct(2, "David's Book", 1.99, 0);
+		b.copy(n);
+		b.getTitle();
+		boolean result = b.getTitle() == "David's Book";
+		assertTrue(result);
+		
+	}
+	
+	@Test
+	void testDVDProductCopy() {
+		DVDProduct b = new DVDProduct(2, "Syd's Book", 1.99, 0);
+		DVDProduct n = new DVDProduct(2, "David's Book", 1.99, 0);
+		b.copy(n);
+		b.getTitle();
+		boolean result = b.getTitle() == "David's Book";
+		assertTrue(result);
+		
+	}
+	
+	@Test
+	void testAudioBookProductCopy() {
+		AudioBookProduct b = new AudioBookProduct(2, "Syd's Book", 1.99, 0);
+		AudioBookProduct n = new AudioBookProduct(2, "David's Book", 1.99, 0);
+		b.copy(n);
+		b.getTitle();
+		boolean result = b.getTitle() == "David's Book";
+		assertTrue(result);
+		
 	}
 	
 

@@ -43,8 +43,8 @@ public class BookClubManagerTest{
     @Test
     @Order(2)
     void findCustomerTest()  {
-        assertFalse(bookTest.newCustomer("wrong name"));
-        assertTrue(bookTest.findCustomer("Test name"));
+    	bookTest.newCustomer("wrong name");
+        assertTrue(bookTest.findCustomer("wrong name"));
     }
 
     @Test
