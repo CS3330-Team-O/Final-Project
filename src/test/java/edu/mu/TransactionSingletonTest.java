@@ -61,15 +61,10 @@ class TransactionSingletonTest {
 	
 	@Test
 	void checkout() {
-		String input = "1\nmarino, david";
+		String input = "2\n1\nmarino, david\n2";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
-        transactionSingleton.checkout();   
-        
-        input = "1\nmarino, david\n2";
-        inputStream = new ByteArrayInputStream(input.getBytes());
-        System.setIn(inputStream);
-        transactionSingleton.checkout();  
+        transactionSingleton.checkout();
         
         assertTrue(true);
 	}
