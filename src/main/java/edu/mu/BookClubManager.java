@@ -77,6 +77,7 @@ public class BookClubManager {
 
 
             try {
+            	String line = scanner.nextLine();
                 String name = scanner.nextLine();
                 if (this.newCustomer(name)) {
                     success = true;
@@ -120,6 +121,7 @@ public class BookClubManager {
         //Name enter to search for customer in book club
         System.out.println("Please enter your name in format (last, first)");
         try {
+        	String line = s1.nextLine();
             String name = s1.nextLine();
             return this.findCustomer(name);
         }
