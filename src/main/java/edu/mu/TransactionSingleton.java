@@ -86,10 +86,11 @@ public class TransactionSingleton {
 	 */
 	public void joinBookClub(){
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Enter your name and email to join. \"last,first\" \n \"email\"");
+		System.out.println("Enter your name \n \"last,first\"");
 		String name = scanner.nextLine();
+		System.out.println("Enter your email \n \"email@mail.com\"");
 		String email = scanner.nextLine();
-		boolean works = bookBoy.newCustomer(name, email);
+		bookBoy.newCustomer(name, email);;
 	}
 
 	/**
@@ -128,11 +129,7 @@ public class TransactionSingleton {
 		try {
 			Scanner scanner = new Scanner(System.in);
 			String name = scanner.nextLine();
-			if(bookBoy.findCustomer(name)) {
-				return true;
-			} else {
-				return false;
-			}
+            return bookBoy.findCustomer(name);
 		}
 		catch (InputMismatchException e) {
 			System.out.println("Invalid input. Please enter your name in format (last, first)");
@@ -161,6 +158,8 @@ public class TransactionSingleton {
 
 		if(BookClub()){
 			this.total = this.total * 0.8;
+		} else {
+			System.out.println("Name not found");
 		}
 
     	System.out.println("Would you like to pay with cash or card? \n1. Cash \n2. Card");
