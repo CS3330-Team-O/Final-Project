@@ -36,10 +36,13 @@ public class TransactionSingleton {
     }
 	
 	//Removes item to cart by removing the item to the cart array list and subtracting the price to the total
-	public void removeItemFromCart(Product product) {
-		product.updateStock(product);
-        cart.remove(product);
-        total -= product.getCost();
+	public boolean removeItemFromCart(Product product) {
+		if (product.updateStock(product)) {
+			cart.remove(product);
+	        total -= product.getCost();
+	        return true;
+		}
+        return false;
     }
 	
 	//Helper method to be called in checkout() that clears array list and resets total to 0.0
