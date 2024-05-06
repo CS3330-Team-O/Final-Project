@@ -20,5 +20,7 @@ product_id,product_type,product_name,product_price,product_stock
 6,Book,Book,16.0,2
 5,DVD,DVD,15.09,9
 6,Book,Book,16.0,2
+5,DVD,DVD,15.09,9
+6,Book,Book,16.0,2
 5,DVD,DavidTest,15.09,9
 6,Book,AshleyTest,16.0,2
