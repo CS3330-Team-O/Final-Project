@@ -46,7 +46,6 @@ public class TransactionSingleton {
         return false;
     }
 	
-	
 	/**
 	 * Removes item to cart by removing the item to the cart array list and subtracting the price to the total
 	 * 
@@ -65,22 +64,28 @@ public class TransactionSingleton {
 	/**
 	 * Clears cart
 	 * Helper method to be called in checkout() that clears array list and resets total to 0.0
+	 * 
+	 * @return {boolean}
 	 */
-	public void clearCart() {
+	public boolean clearCart() {
 		cart.clear();
 		total = 0.0;
+		if(total == 0.0) {
+			return true;
+		}
+		return false;
 	}
 	
 	/**
 	 * Prints cart
 	 * Helper method used in main
 	 */
-	public void printCart() {
+	public boolean printCart() {
 		for (Product product : cart) {
             System.out.println(product);
         }
+		return true;
     }
-
 
 	/**
 	 * Returns total price of books in cart
