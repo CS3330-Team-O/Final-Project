@@ -9,7 +9,7 @@ public class TransactionSingleton {
 	private ArrayList<Product> cart = new ArrayList<>();
 	private double total;
 
-	private static BookClubManager bookBoy = new BookClubManager();
+	private static final BookClubManager bookBoy = new BookClubManager();
 
 	/**
 	 * Constructor that initializes total and array list
@@ -84,13 +84,12 @@ public class TransactionSingleton {
 	/**
 	 * Helper method that adds a member to the book club
 	 */
-	public void joinBookClub(){
-		Scanner scanner = new Scanner(System.in);
+	public void joinBookClub(Scanner s1){
 		System.out.println("Enter your name \n \"last,first\"");
-		String name = scanner.nextLine();
+		String name = s1.nextLine();
 		System.out.println("Enter your email \n \"email@mail.com\"");
-		String email = scanner.nextLine();
-		bookBoy.newCustomer(name, email);;
+		String email = s1.nextLine();
+		bookBoy.newCustomer(name, email);
 	}
 
 	/**
@@ -98,20 +97,19 @@ public class TransactionSingleton {
 	 * 
 	 * @return {boolean} 
 	 */
-	public boolean BookClub(){
+	public boolean BookClub(Scanner s1){
 		System.out.println("Are you a member of the book club?\n1. yes \n2. no");
 		boolean success = false;
 		do {
 			try {
-				Scanner scanner = new Scanner(System.in);
-				int type = scanner.nextInt();
+				int type = s1.nextInt();
 				if (type == 1) {
 					success = true;
 				} else if (type == 2) {
 					System.out.println("Would you like to join the book club? \n1. yes \n2. no");
-					int type2 = scanner.nextInt();
+					int type2 = s1.nextInt();
 					if (type2 == 1) {
-						joinBookClub();
+						joinBookClub(s1);
 						return true;
 					} else if (type2 == 2) {
 						return false;
@@ -127,8 +125,7 @@ public class TransactionSingleton {
 		//Name enter to search for customer in book club
 		System.out.println("Please enter your name in format (last, first)");
 		try {
-			Scanner scanner = new Scanner(System.in);
-			String name = scanner.nextLine();
+			String name = s1.nextLine();
             return bookBoy.findCustomer(name);
 		}
 		catch (InputMismatchException e) {
@@ -156,7 +153,7 @@ public class TransactionSingleton {
     	Scanner scanner = new Scanner(System.in);
     	ICheckoutStrategy checkoutStrategy = null;
 
-		if(BookClub()){
+		if(BookClub(scanner)){
 			this.total = this.total * 0.8;
 		} else {
 			System.out.println("Name not found");
