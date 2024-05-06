@@ -4,9 +4,14 @@ import java.util.Scanner;
 
 public class CashCheckoutStrategy implements ICheckoutStrategy {
 
-	//Cash checkout strategy that returns change
+	/**
+	 * Checkout strategy implemented for card
+	 * 
+	 * @param total
+	 * @return {boolean} true if checkout was successful, false if it was not
+	 */
 	@Override
-	public void checkout(double total) {
+	public boolean checkout(double total) {
 		Scanner scanner = new Scanner(System.in);
 		double payWith = 0.0;
 		System.out.println("Thank you for checking out with cash. Your total is $" + total);
@@ -21,8 +26,12 @@ public class CashCheckoutStrategy implements ICheckoutStrategy {
 			check = false;
 		}
 		double change = payWith - total;
-		System.out.printf("Your change is $" + "%.2f%n", change);
 		scanner.close();
+		if(change > 0.0) {
+			System.out.printf("Your change is $" + "%.2f%n", change);
+			return true;
+		}
+		return false;
 	}
 
 }
